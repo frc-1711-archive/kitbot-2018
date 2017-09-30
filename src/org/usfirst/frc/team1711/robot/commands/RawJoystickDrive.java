@@ -7,7 +7,7 @@ public class RawJoystickDrive extends Command
 {
 	Joystick stick;
 	
-	public RawJoystickDrive(Joystick stick)
+	public RawJoystickDrive()
 	{
 		this.stick = stick;
 	}
@@ -19,12 +19,12 @@ public class RawJoystickDrive extends Command
 	
 	protected void execute()
 	{
-		
+		Robot.driveSystem.arcadeDrive(RobotMap.driverController);
 	}
 	
 	protected void end()
 	{
-		
+		Robot.driveSystem.drive(0);
 	}
 	
 	protected void interrupted()

@@ -1,31 +1,39 @@
 import org.usfirst.frc.team1711.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSystem extends Subsystem
 {
-	CANTalon leftMaster;
-	CANTalon leftSlave;
-	CANTalon rightMaster;
-	CANTalon rightSlave;
+	CANTalon leftFront;
+	CANTalon leftRear;
+	CANTalon rightFront;
+	CANTalon rightRear;
 	
 	RobotDrive basicDrive;
 	
 	public DriveSystem()
 	{
-		leftMaster = new CANTalon(RobotMap.leftMasterDrive);
-		rightMaster = new CANTalon(RobotMap.rightMasterDrive);
-	
-		//initialize left slave here
-		//initialize right slave here
+		leftFront = new CANTalon(RobotMap.leftMasterDrive);
+		rightFront = new CANTalon(RobotMap.rightMasterDrive);
+		leftRear = new CANTalon(RobotMap.leftSlaveDrive);
+		rightRear = new CANTalon(RobotMap.rightSlaveDrive);
+		
+		basicDrive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
 	}
 	
 	public void drive(double speed)
 	{
-		leftMaster.set(speed);
-		//set right master here
-		//set left slave here
-		//set right slave here
+		leftFront.set(speed);
+		rightFront.set(speed);
+		leftRear.set(speed);
+		rightRear.set(speed);
+	}
+	
+	public void arcadeDrive(Joystick stick)
+	{
+		basicDrive.arcadeDrive(stick);
 	}
 
 	@Override

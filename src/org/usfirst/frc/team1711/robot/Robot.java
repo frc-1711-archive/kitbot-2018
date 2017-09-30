@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team1711.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -22,14 +21,12 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveSystem driveSystem;
+	
+	public static RawJoystickDrive teleopCommand;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
 		RobotMap.init(); //this line first
@@ -37,14 +34,11 @@ public class Robot extends IterativeRobot {
 		
 		driveSystem = new DriveSystem();
 		
+		teleopCommand = new RawJoystickDrive();
+		
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
 
@@ -63,38 +57,27 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.start();
 	}
 
-	/**
-	 * This function is called periodically during autonomous
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
 	@Override
-	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+	public void teleopInit() 
+	{
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
 
-	/**
-	 * This function is called periodically during operator control
-	 */
 	@Override
-	public void teleopPeriodic() {
-		
+	public void teleopPeriodic() 
+	{		
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This function is called periodically during test mode
-	 */
 	@Override
-	public void testPeriodic() {
+	public void testPeriodic() 
+	{
 		LiveWindow.run();
 	}
 }
