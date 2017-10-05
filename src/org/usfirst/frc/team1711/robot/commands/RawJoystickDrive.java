@@ -5,11 +5,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RawJoystickDrive extends Command
 {
-	Joystick stick;
 	
 	public RawJoystickDrive()
 	{
-		this.stick = stick;
+		
 	}
 
 	protected void initialize()
