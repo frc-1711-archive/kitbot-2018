@@ -14,10 +14,10 @@ public class RobotMap {
 	
 	public static void init()
 	{
-		leftMasterDrive = 1; 
-		rightMasterDrive = 0;
-		leftSlaveDrive = 3; 
-		rightSlaveDrive = 2; 
+		leftMasterDrive = 2; 
+		rightMasterDrive = 1;
+		leftSlaveDrive = 0; 
+		rightSlaveDrive = 3; 
 		
 		driverController = new Joystick(0);
 	}

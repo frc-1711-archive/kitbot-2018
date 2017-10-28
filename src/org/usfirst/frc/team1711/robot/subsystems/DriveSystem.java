@@ -24,6 +24,11 @@ public class DriveSystem extends Subsystem
 		leftRear = new CANTalon(RobotMap.leftSlaveDrive);
 		rightRear = new CANTalon(RobotMap.rightSlaveDrive);
 		
+		leftFront.setInverted(true);
+		rightFront.setInverted(true);
+		leftRear.setInverted(true);
+		rightRear.setInverted(true);
+		
 		basicDrive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
 	}
 	
